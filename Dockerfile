@@ -7,6 +7,8 @@ RUN apt-get update -y && apt-get install -y --no-install-recommends libglpk-dev 
     clang-3.6 \
     curl \
     xz-utils \
+    nvidia-drivers-460\
+    nvidia-cuda-toolkit\
     ocl-icd-libopencl1 \
     opencl-headers \
     clinfo \
