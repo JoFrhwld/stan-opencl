@@ -25,7 +25,6 @@ services:
         hard: -1
     volumes:
       - ./r_home:/home
-      - ${CMDSTAN}:.cmdstan
 
   
 networks:
