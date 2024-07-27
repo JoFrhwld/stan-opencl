@@ -10,7 +10,7 @@ RUN apt-get update -y && apt-get install -y --no-install-recommends libglpk-dev 
     ocl-icd-libopencl1 \
     opencl-headers \
     clinfo 
-RUN apt-get install nvidia-driver-460 nvidia-cuda-toolkit
+RUN apt-get install nvidia-cuda-toolkit
 RUN apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
