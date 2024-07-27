@@ -14,6 +14,11 @@ RUN apt-get update -y && apt-get install -y --no-install-recommends libglpk-dev 
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
+RUN wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/cuda-keyring_1.1-1_all.deb \
+    && dpkg -i cuda-keyring_1.1-1_all.deb \
+    && sudo apt-get update\
+    && apt-get -y install cuda-toolkit-12-5
+
 RUN mkdir -p /etc/OpenCL/vendors && \
     echo "libnvidia-opencl.so.1" > /etc/OpenCL/vendors/nvidia.icd
 ENV NVIDIA_VISIBLE_DEVICES all
