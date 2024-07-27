@@ -9,9 +9,9 @@ RUN apt-get update -y && apt-get install -y --no-install-recommends libglpk-dev 
     xz-utils \
     ocl-icd-libopencl1 \
     opencl-headers \
-    clinfo 
-RUN apt-get install ubuntu-drivers-common
-RUN apt-get clean \
+    clinfo \
+    ubuntu-drivers-common \
+    && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p /etc/OpenCL/vendors && \
