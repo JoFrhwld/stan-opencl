@@ -10,7 +10,7 @@ RUN apt-get update -y && apt-get install -y --no-install-recommends libglpk-dev 
     ocl-icd-libopencl1 \
     opencl-headers \
     clinfo 
-RUN apt install ubuntu-drivers-common
+RUN apt-get install ubuntu-drivers-common
 RUN apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
