@@ -7,12 +7,11 @@ RUN apt-get update -y && apt-get install -y --no-install-recommends libglpk-dev 
     clang-3.6 \
     curl \
     xz-utils \
-    nvidia-drivers-460\
-    nvidia-cuda-toolkit\
     ocl-icd-libopencl1 \
     opencl-headers \
     clinfo \
-    && apt-get clean \
+RUN apt-get install nvidia-drivers-460 nvidia-cuda-toolkit clinfo
+RUN apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p /etc/OpenCL/vendors && \
