@@ -42,8 +42,8 @@ RUN R -q -e 'Sys.setenv(DOWNLOAD_STATIC_LIBV8 = 1); install.packages("rstan")'
 ENV CMDSTAN /usr/share/.cmdstan
 
 RUN cd /usr/share/ \
-  && wget --progress=dot:mega https://github.com/stan-dev/cmdstan/releases/download/v2.35.0/cmdstan-2.35.0.tar.gz \
-  && tar -zxpf cmdstan-2.35.0.tar.gz && mv cmdstan-2.35.0 .cmdstan \
+  && wget --progress=dot:mega https://github.com/stan-dev/cmdstan/releases/download/v2.26.1/cmdstan-2.26.1.tar.gz \
+  && tar -zxpf cmdstan-2.26.1.tar.gz && mv cmdstan-2.26.1 .cmdstan \
   && ln -s .cmdstan cmdstan && cd .cmdstan \
   && echo "CXX = clang++" >> make/local \
   && echo "STAN_OPENCL=true" >> make/local \
