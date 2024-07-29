@@ -18,8 +18,8 @@ RUN wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86
     && dpkg -i cuda-keyring_1.1-1_all.deb \
     && sudo apt-get update\
     && apt-get -y install cuda-toolkit-12-5 
-    
-ENV PATH="/usr/local/cuda:$PATH" 
+
+ENV PATH="/usr/local/cuda/bin:$PATH" 
 ENV LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
 
 RUN mkdir -p /etc/OpenCL/vendors && \
