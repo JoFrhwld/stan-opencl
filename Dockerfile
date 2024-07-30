@@ -10,7 +10,9 @@ RUN apt-get update -y && apt-get install -y --no-install-recommends libglpk-dev 
     ocl-icd-libopencl1 \
     opencl-headers \
     clinfo \
-    ubuntu-drivers-common \
+    #ubuntu-drivers-common \
+    nvidia-driver-440 \
+    nvidia-cuda-toolkit \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
@@ -27,6 +29,8 @@ RUN mkdir -p /etc/OpenCL/vendors && \
 ENV NVIDIA_VISIBLE_DEVICES all
 ENV NVIDIA_DRIVER_CAPABILITIES compute,utility
 RUN ln -s /usr/lib/x86_64-linux-gnu/libOpenCL.so.1 /usr/lib/libOpenCL.so
+ENV PATH="/usr/lib/x86_64-linux-gnu/:$PATH" 
+ENV LD_LIBRARY_PATH="/usr/lib/x86_64-linux-gnu/:$LD_LIBRARY_PATH"
 
 
 RUN mkdir -p $HOME/.R/ \ 
@@ -48,7 +52,7 @@ RUN cd /usr/share/ \
   && wget --progress=dot:mega https://github.com/stan-dev/cmdstan/releases/download/v2.26.1/cmdstan-2.26.1.tar.gz \
   && tar -zxpf cmdstan-2.26.1.tar.gz && mv cmdstan-2.26.1 .cmdstan \
   && ln -s .cmdstan cmdstan && cd .cmdstan \
-  && echo "CXX = clang++" >> make/local \
+  && echo "CXX=clang++" >> make/local \
   && echo "STAN_OPENCL=true" >> make/local \
   && echo "OPENCL_PLATFORM_ID=0" >> make/local \
   && echo "OPENCL_DEVICE_ID=0" >> make/local \
